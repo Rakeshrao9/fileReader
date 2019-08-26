@@ -61,10 +61,13 @@ public class ParserServiceImpl implements ParserService {
     switch(tableName)
     {
       case "ADJD_CLMHST_CLM" :
-        repository.insert(list);
+       int q = repository.insert(list);
+System.out.println("inserted rows: "+q);
+        int qa = repository.update(list);
+        System.out.println("updated rows: "+qa);
         break;
       case "ADJD_CLMSF_BLK_A" :
-        repository.update(list);
+
         break;
 
       default :

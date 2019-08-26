@@ -17,7 +17,9 @@ public class FileJdbcRepository {
   }
 
   public int update(LinkedList list) {
-    return jdbcTemplate.update("update ADJD_CLMHST_CLM " + " set partnId = ? " + " where partnId = ?, partVal = ?",
-        new Object[] { list.get(0), list.get(1) });
+    return jdbcTemplate.update("update ADJD_CLMHST_CLM " + " set partnId = ? " + " where partnId = ? and partVal = ? and invnCtlNbr = ?",
+        new Object[] { list.get(3), list.get(0), list.get(1), list.get(2) });
   }
+
+
 }
