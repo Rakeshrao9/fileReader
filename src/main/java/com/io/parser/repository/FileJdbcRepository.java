@@ -11,8 +11,13 @@ public class FileJdbcRepository {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
+  public int insert(LinkedList<String> list) {
+    return jdbcTemplate.update("insert into ADJD_CLMHST_CLM (partnId, partVal, invnCtlNbr) " + "values(?,  ?, ?)",
+        new Object[] { list.get(0), list.get(1) , list.get(2) });
+  }
+
   public int update(LinkedList list) {
-    return jdbcTemplate.update("update TABLE_NAME " + " set name = ?, passport_number = ? " + " where id = ?",
-        new Object[] {  });
+    return jdbcTemplate.update("update ADJD_CLMHST_CLM " + " set partnId = ? " + " where partnId = ?, partVal = ?",
+        new Object[] { list.get(0), list.get(1) });
   }
 }
